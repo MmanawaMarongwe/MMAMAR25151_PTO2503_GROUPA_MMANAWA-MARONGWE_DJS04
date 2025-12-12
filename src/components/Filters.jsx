@@ -1,15 +1,18 @@
+import { useContext } from "react";
+import { PodcastContext } from "../utils/PodcastContext";
+
 export default function Filters() {
+  const { search, setSearch } = useContext(PodcastContext);
+
   return (
-    <section className="filter-area">
-      <label htmlFor="genre-options">Filter by:</label>
-      <select name="genre" id="genre-options">
-        <option value="All Genres">All Genres</option>
-      </select>
-      <select name="recently-updated" id="most-recent">
-        <option value="recent">Recently updated</option>
-        <option value="popular">Most popular</option>
-        <option value="newest">Newest</option>
-      </select>
-    </section>
+    <div className="filters">
+      <input
+        type="text"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Search podcasts..."
+        aria-label="Search podcasts by title"
+      />
+    </div>
   );
 }
