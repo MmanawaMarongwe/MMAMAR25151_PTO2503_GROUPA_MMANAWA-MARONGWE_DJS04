@@ -17,7 +17,7 @@ body {
 header {
   display: flex;
   flex-direction: rows;
-  padding: 16px;
+  padding: 12px;
   padding-bottom: 0px;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +25,7 @@ header {
 }
 
 h1 {
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 600;
   color: var(--text);
 }
@@ -39,7 +39,8 @@ label {
   color: var(--text);
 }
 
-select {
+select,
+input {
   position: relative;
   padding: 12px;
   border-radius: 8px;
@@ -65,8 +66,8 @@ option {
 }
 
 .app-logo {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   margin: 16px 0px 0px 16px;
 }
 
@@ -82,7 +83,7 @@ option {
   width: 48px;
 }
 
-.filter-area {
+.search-bar {
   position: relative;
   margin-top: 24px;
   margin-left: 32px;
@@ -101,5 +102,5 @@ option {
 }
 
 .pod-cover {
-  width: 250px;
+  width: 216px;
 }
