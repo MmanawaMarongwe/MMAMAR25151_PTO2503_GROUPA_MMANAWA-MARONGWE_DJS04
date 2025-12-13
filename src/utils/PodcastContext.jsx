@@ -12,6 +12,7 @@ export const SORT_OPTIONS = [
 export function PodcastProvider({ children, initialPodcasts = [] }) {
   const [search, setSearch] = useState("");
   const [sortKey, setSortKey] = useState("default");
+  const [genre, setGenre] = useState("all");
 
   const podcasts = useMemo(() => {
     const safePodcasts = Array.isArray(initialPodcasts) ? initialPodcasts : [];
@@ -25,10 +26,18 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
         )
       : safePodcasts;
 
-    // sort (applied to search results)
-    if (sortKey === "default") return searchedPodcasts;
+    //  Genre filter
+    const filteredByGenre =
+      genre === "all"
+        ? searchedPodcasts
+        : searchedPodcasts.filter((podcast) =>
+            podcast.genres.includes(Number(genre))
+          );
 
-    return [...searchedPodcasts].sort((a, b) => {
+    // sort (applied to search results)
+    if (sortKey === "default") return filteredByGenre;
+
+    return [...filteredByGenre].sort((a, b) => {
       switch (sortKey) {
         case "title-asc":
           return a.title.localeCompare(b.title);
@@ -41,7 +50,7 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
           return new Date(b.updated) - new Date(a.updated);
       }
     });
-  }, [initialPodcasts, search, sortKey]);
+  }, [initialPodcasts, search, genre, sortKey]);
 
   const value = {
     search,
@@ -50,6 +59,8 @@ export function PodcastProvider({ children, initialPodcasts = [] }) {
     setSortKey,
     sortOptions: SORT_OPTIONS,
     podcasts,
+    genre,
+    setGenre,
   };
 
   return (
