@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { PodcastContext } from "../utils/PodcastContext";
 
 export default function Filters() {
-  const { search, setSearch } = useContext(PodcastContext);
+  const { search, setSearch, sortKey, setSortKey, sortOptions } =
+    useContext(PodcastContext);
 
   return (
     <div className="filters">
@@ -13,6 +14,14 @@ export default function Filters() {
         placeholder="Search podcasts..."
         aria-label="Search podcasts by title"
       />
+
+      <select value={sortKey} onChange={(e) => setSortKey(e.target.value)}>
+        {sortOptions.map((option) => (
+          <option key={option.key} value={option.key}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   );
 }

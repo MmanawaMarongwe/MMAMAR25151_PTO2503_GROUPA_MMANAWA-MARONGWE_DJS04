@@ -2,24 +2,54 @@ import React, { createContext, useMemo, useState } from "react";
 
 export const PodcastContext = createContext(null);
 
+export const SORT_OPTIONS = [
+  { key: "date-desc", label: "Newest" },
+  { key: "date-asc", label: "Oldest" },
+  { key: "title-asc", label: "Title A–Z" },
+  { key: "title-desc", label: "Title Z–A" },
+];
+
 export function PodcastProvider({ children, initialPodcasts = [] }) {
   const [search, setSearch] = useState("");
+  const [sortKey, setSortKey] = useState("default");
 
   const podcasts = useMemo(() => {
     const safePodcasts = Array.isArray(initialPodcasts) ? initialPodcasts : [];
+
     const searchQuery = search.trim().toLowerCase();
 
-    if (!searchQuery) return safePodcasts;
+    // search
+    const searchedPodcasts = searchQuery
+      ? safePodcasts.filter((podcast) =>
+          podcast.title.toLowerCase().includes(searchQuery)
+        )
+      : safePodcasts;
 
-    return safePodcasts.filter((p) =>
-      p.title.toLowerCase().includes(searchQuery)
-    );
-  }, [initialPodcasts, search]);
+    // sort (applied to search results)
+    if (sortKey === "default") return searchedPodcasts;
+
+    return [...searchedPodcasts].sort((a, b) => {
+      switch (sortKey) {
+        case "title-asc":
+          return a.title.localeCompare(b.title);
+        case "title-desc":
+          return b.title.localeCompare(a.title);
+        case "date-asc":
+          return new Date(a.updated) - new Date(b.updated);
+        case "date-desc":
+        default:
+          return new Date(b.updated) - new Date(a.updated);
+      }
+    });
+  }, [initialPodcasts, search, sortKey]);
 
   const value = {
     search,
     setSearch,
-    podcasts, // ✅ searched list
+    sortKey,
+    setSortKey,
+    sortOptions: SORT_OPTIONS,
+    podcasts,
   };
 
   return (
