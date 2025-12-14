@@ -4,6 +4,7 @@ import PodcastGrid from "./components/PodcastGrid";
 import { PodcastProvider } from "./utils/PodcastContext";
 import Header from "./components/Header";
 import Filters from "./components/Filters";
+import Pagination from "./components/Pagination";
 import "./App.css";
 
 export default function App() {
@@ -46,6 +47,7 @@ export default function App() {
           <Filters />
           <main>
             <PodcastGrid />
+            <Pagination />
           </main>
         </PodcastProvider>
       )}
