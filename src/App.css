@@ -7,10 +7,6 @@
   --accent: #ff9f3f;
 }
 
-#root {
-  padding: 1rem;
-}
-
 .podcast-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
