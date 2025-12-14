@@ -4,6 +4,7 @@ import PodcastGrid from "./components/PodcastGrid";
 import { PodcastProvider } from "./utils/PodcastContext";
 import Header from "./components/Header";
 import Filters from "./components/Filters";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Pagination from "./components/Pagination";
 import "./App.css";
 
@@ -39,18 +40,25 @@ export default function App() {
     <>
       <Header />
 
-      {loading && <p>Loading Podcasts</p>}
-      {error && <p>Error occurred while fetching podcasts: {error}</p>}
+      <ErrorBoundary>
+        {error && (
+          <p className="error">
+            Error occurred while fetching podcasts: {error}
+          </p>
+        )}
 
-      {!loading && !error && (
-        <PodcastProvider initialPodcasts={podcasts}>
-          <Filters />
-          <main>
-            <PodcastGrid />
-            <Pagination />
-          </main>
-        </PodcastProvider>
-      )}
+        {!error && loading && <p>Loading Podcasts</p>}
+
+        {!error && !loading && (
+          <PodcastProvider initialPodcasts={podcasts}>
+            <Filters />
+            <main>
+              <PodcastGrid />
+              <Pagination />
+            </main>
+          </PodcastProvider>
+        )}
+      </ErrorBoundary>
     </>
   );
 }
