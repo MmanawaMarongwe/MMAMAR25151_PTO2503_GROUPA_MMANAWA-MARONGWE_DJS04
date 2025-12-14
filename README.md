@@ -1,90 +1,82 @@
-# DSJ04 React Podcast App: Search, Sort, Filter, and Pagination
+# 🎧 React Podcast Explorer
 
-## Project Overview
+## 🚀 Overview
 
-In this project, you will build an advanced podcast browsing experience that allows users to dynamically **search**, **sort**, **filter**, and **paginate** a list of podcast shows. The goal is to create an intuitive interface that responds to user input in real time and maintains a consistent, seamless experience throughout navigation.
+This React podcast explorer app is a **podcast browsing application** that allows users to **search**, **sort**, **filter by genre**, and **paginate** through a list of podcast shows. The app fetches podcast data from an external API and updates the displayed results dynamically based on user interaction.
 
-This project will test your ability to manage complex UI state, synchronise multiple user interactions, and maintain clean, scalable code.
+The application is designed to maintain a **consistent and responsive experience**, ensuring that all user selections remain active while navigating between pages.
 
-## Core Objectives
+## 🔗 Live Demo
 
-### Search Functionality
+👉 _(Live demo link not provided)_
 
-- Implement a flexible search that matches any part of the podcast title.
-- Results should update dynamically as the user types or upon submission.
-- Ensure that search results integrate with current filters, sorts, and pagination without resetting them.
+## ✨ Features
 
-### Sorting Options
+- **Live Search**: Search podcasts by typing any part of the podcast title. Results update instantly.
+- **Sorting Options**: Sort podcasts by newest, oldest, title A–Z, or title Z–A.
+- **Genre Filtering**: Filter podcasts by selecting a genre from a dropdown.
+- **Pagination**: Browse podcasts in pages of 8 items for improved readability and performance.
+- **Synchronized UI Controls**: Search, sort, filter, and pagination work together seamlessly.
+- **Loading & Error States**: Clear feedback is shown while data is loading or when an error occurs.
+- **Error Boundary Handling**: Prevents blank screens by displaying a fallback message if a component crashes.
 
-- Allow sorting podcasts by:
-  - Newest first (based on last updated date).
-  - Title A–Z and Z–A.
-- Sorting must work in tandem with any search or filter criteria.
+## 🛠️ Tech Stack
 
-### Filtering
+- **React** (functional components & hooks)
+- **JavaScript (ES6+)**
+- **Fetch API**
+- **React Context API** (state management)
+- **CSS3** (responsive styling)
 
-- Enable genre-based filtering using a dropdown or multi-select input.
-- Ensure filters work alongside current search, sort, and pagination state.
-- Maintain selected filters when navigating between pages or updating the list.
+## 📖 How to Use
 
-### Pagination
+1. Start the application locally or access the live demo (if available).
+2. Use the **search input** to find podcasts by title.
+3. Select a **genre** to filter podcasts by category.
+4. Choose a **sorting option** to reorder the results.
+5. Navigate between pages using the **pagination controls**.
+6. Active filters and sorting remain applied while moving between pages.
 
-- Display podcasts in manageable chunks using pagination, load-more, or infinite scroll.
-- Ensure that pagination respects the currently active search, filter, and sort state.
-- Keep all UI selections intact while navigating pages.
+## ⚙️ Setup Instructions
 
-### State Synchronisation
+1. Clone the repository:
 
-- Maintain a centralised and cleanly organised state using React state, context, or a state management library.
-- Ensure that all controls (search, sort, filter, pagination) reflect changes immediately and stay in sync.
+   ```bash
+   git clone <repository-url>
+   ```
 
-### Code Quality & Maintainability
+2. Navigate into the project directory:
 
-- Use JSDoc to document all major functions and modules.
-- Apply consistent formatting and naming conventions.
-- Keep logic modular and components reusable.
+   ```bash
+   cd DJS04
+   ```
 
-### API Endpoints
+3. Install dependencies:
 
-Data can be called via a `fetch` request to the following endpoint.
+   ```bash
+   npm install
+   ```
 
-| URL                               |                             |
-| --------------------------------- | --------------------------- |
-| `https://podcast-api.netlify.app` | Returns an array of PREVIEW |
+4. Start the development server:
 
-### Genre Titles
+   ```bash
+   npm run dev
+   ```
 
-Since the podcast preview information fetched from the API only exposes genres by their IDs, the actual genre details (such as titles) are not included in the API response. These details are instead provided in the data.js file found in this repository. Therefore, it is recommended that you include the mapping between genre ID values and their corresponding titles in your code using this file.
+5. Open the app in your browser:
+   ```
+   http://localhost:5173
+   ```
 
-## Project Deliverables
+## 🧪 Code Quality
 
-- A fully functional React app that:
+- Clean and modular component structure.
+- Centralised state management using React Context.
+- Major components and utilities documented with **JSDoc comments**.
+- Consistent formatting across JavaScript, JSX, HTML, and CSS files.
 
-  - Fetches and displays podcast data.
-  - Allows live searching, sorting, filtering, and pagination.
-  - Maintains consistent state across all UI interactions.
+## 🎯 Future Improvements
 
-- **Clean Codebase** with:
-
-  - Reusable, modular components.
-  - Clear and consistent formatting across all files.
-  - JSDoc comments for functions/modules.
-
-- **README.md** with:
-
-  - Project overview and purpose.
-  - Setup and usage instructions.
-  - Descriptions of key features (search, filter, sort, pagination).
-
-- **Version Control (GitHub)**:
-  - Clear, meaningful commit messages.
-  - Incremental commits reflecting development progress.
-
-## Success Criteria
-
-- No console errors or broken UI on load.
-- All features work correctly and together without losing state.
-- Clean, maintainable codebase with documentation.
-- A polished user experience with responsive layout and real-time updates.
-
----
+- Persist user selections across page refreshes using localStorage.
+- Add advanced filtering options (e.g. multiple genres).
+- Improve accessibility and keyboard navigation support.
