@@ -6,10 +6,6 @@ This React podcast explorer app is a **podcast browsing application** that allow
 
 The application is designed to maintain a **consistent and responsive experience**, ensuring that all user selections remain active while navigating between pages.
 
-## 🔗 Live Demo
-
-👉 _(Live demo link not provided)_
-
 ## ✨ Features
 
 - **Live Search**: Search podcasts by typing any part of the podcast title. Results update instantly.
